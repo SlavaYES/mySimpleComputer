@@ -1,14 +1,19 @@
+#include <stdio.h>
 #define N 100
+#define M 10
 
 #define ERRORADD  1
 #define ERRORFLAG 2
 #define ERRORCOMS 3
 #define ERRORFILE 4
+#define ERROROPER 5
+
+#define BIT7 0x7f
 
 int memory[N];
 int registr;
 
-enum commands {
+enum command {
 
     // INPUT/OUTPUT
     READ  = 0x10,
@@ -56,3 +61,38 @@ enum commands {
     MOVCA = 0x73,
     MOVCR = 0x74
 };
+
+// Memory //
+
+int sc_memoryInit(); // Initialization array memory
+
+int sc_memorySet(int address, int value); // Set value to address
+
+int sc_memoryGet(int address, int *value); // Get value of address
+
+int sc_memorySave(char *filename); // Save to file in binary view
+
+int sc_memoryLoad(char *filename); // Load of file RAM
+
+int sc_memoryPrint(void);
+
+// Register //
+
+int sc_regInit(void); // It initializaion register of flags zero value
+
+int sc_regSet(int flag, int value); // sets the value of the flag register
+
+int sc_regGet(int flag, int *value); // gets the value of the flag
+
+// Command //
+
+int sc_checkCommand(int command);
+
+int sc_commandEncode(int command, int operand, int *value); // encodes a command with the specified number and operand and put result in Value
+
+int sc_commandDecode(int value, int *command, int *operand); // decodes the value that command SC
+
+//
+
+
+
