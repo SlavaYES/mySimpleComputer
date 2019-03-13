@@ -1,1 +1,1 @@
-https://travis-ci.org/SlavaYES/mySimpleComputer.svg?branch=master#mySimpleComputer
+[![Build Status](https://travis-ci.org/SlavaYES/mySimpleComputer.svg?branch=master)](https://travis-ci.org/SlavaYES/mySimpleComputer)

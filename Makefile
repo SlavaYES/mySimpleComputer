@@ -9,4 +9,4 @@ CFLAGS=-Wall -Werror -std=c99
 all: main
 
 main: main.c mySimpleComputer.c mySimpleComputer.h myTerm.c myTerm.h
-	$(CC) $(FLAG) main.c mySimpleComputer.c myTerm.c -o main
+	$(CC) $(CFLAGS) main.c mySimpleComputer.c myTerm.c -o main
