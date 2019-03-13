@@ -1,1 +1,1 @@
-https://travis-ci.org/SlavaYES/mySimpleComputer.svg?branch=master# mySimpleComputer
+https://travis-ci.org/SlavaYES/mySimpleComputer.svg?branch=master#mySimpleComputer
