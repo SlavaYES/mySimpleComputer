@@ -8,7 +8,24 @@ CFLAGS=-Wall -Werror -std=c99
 
 all: myComputer
 
-myComputer: make 
+myComputer: project src/main.o src/msc/build/msc.a src/mt/build/mt.a
+	$(CC) src/main.o -L. src/msc/build/msc.a src/mt/build/mt.a -o $@
 
-main: main.c mySimpleComputer.c mySimpleComputer.h myTerm.c myTerm.h
-	$(CC) $(CFLAGS) main.c mySimpleComputer.c myTerm.c -o main
+src/main.o: src/main.c
+	$(CC) $(CFLAGS) -c src/main.c -o $@
+
+project: 
+	make msca
+	make mta
+
+msca: 
+	cd src/msc/ && make all
+
+mta: 
+	cd src/mt/ && make all
+
+clear:
+	-rm src/main.o
+	cd src/msc/ && make clear
+	cd src/mt/ && make clear
+	-rm myComputer
