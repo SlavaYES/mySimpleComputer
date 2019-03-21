@@ -6,7 +6,9 @@ CFLAGS=-Wall -Werror -std=c99
 
 .PHONY: clean
 
-all: main
+all: myComputer
+
+myComputer: make 
 
 main: main.c mySimpleComputer.c mySimpleComputer.h myTerm.c myTerm.h
 	$(CC) $(CFLAGS) main.c mySimpleComputer.c myTerm.c -o main
