@@ -19,12 +19,12 @@ int main()
     rgr = sc_regGet(43, &rgr);
     printf("Проверка регистра\nОжидается: 2. Пофакту: %3d", rgr);
 
-    sc_memoryPrint();
+    //sc_memoryPrint();
 
     printf("\nСохранил файл.\nЗагрузил файл.\nВывод матрицы: ");
     sc_memorySave("file_bin/test.dat");
     sc_memoryLoad("file_bin/test.dat");
-    sc_memoryPrint();
+    //sc_memoryPrint();
 
     rgr = sc_commandEncode(WRITE, 10, &buffer);
     printf("Проверка комманд:\nКоманда с результатом: %3d, Значение:  %3d\n", rgr, buffer);

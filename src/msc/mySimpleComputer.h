@@ -74,8 +74,6 @@ int sc_memorySave(char *filename); // Save to file in binary view
 
 int sc_memoryLoad(char *filename); // Load of file RAM
 
-int sc_memoryPrint(void);
-
 // Register //
 
 int sc_regInit(void); // It initializaion register of flags zero value

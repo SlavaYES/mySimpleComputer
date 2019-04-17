@@ -64,21 +64,6 @@ int sc_memoryLoad(char *filename)
     return 0;
 }
 
-int sc_memoryPrint() 
-{
-    printf("\n\n    ");
-    
-    for (int i = 0; i < M; i++) {printf("%4d", i);} printf("\n");
-    for (int i = 0; i < N; i++) {
-        if (!(i%10)) {
-            printf("\n%4d%4d", i/10, memory[i]);
-        } else {
-            printf("%4d", memory[i]);
-        }
-    } printf("\n");
-    return 0;
-}
-
 int sc_regInit(void)
 {
     registr = registr & 0;
