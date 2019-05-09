@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MYSIMPLECOMPUTER_H
+#define MYSIMPLECOMPUTER_H
 #include <stdio.h>
 #define N 100
 #define M 10
@@ -94,5 +95,5 @@ int sc_commandDecode(int value, int *command, int *operand); // decodes the valu
 
 //
 
-
+#endif
 

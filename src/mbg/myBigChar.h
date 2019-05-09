@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MYBIGCHAR_H
+#define MYBIGCHAR_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -32,3 +33,4 @@ int bc_getbigcharpos(int*, int, int, int*);
 int bc_bigcharwrite(int, int*, int);
 int bc_bigcharread(int, int*, int, int*); 
 int bc_initBigChar(int*, char); 
+#endif

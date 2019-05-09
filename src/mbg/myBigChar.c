@@ -50,7 +50,7 @@ int bc_printbigchar(int symbol[2], int x, int y,
     for (int i = 0; i < 1; i++) {
         for (int j = -1; j < 8; j++) {
             for (int k = 0; k < 8; k++) {
-				bc_getbigcharpos(bigChar + i, j, k, &value);
+				bc_getbigcharpos(symbol + i, j, k, &value);
 				if (value) {
 					bc_printA(ACS_CKBOARD);
 				} else {

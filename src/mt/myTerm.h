@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MYTERM_H
+#define MYTERM_H
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/ioctl.h>
@@ -23,3 +24,4 @@ int mt_gotoXY(int, int); // move X and Y
 int mt_getscreensize(int *rows, int *cols);
 int mt_setfgcolor(enum Color); // fill color text
 int mt_setbgcolor(enum Color); // fill color background
+#endif

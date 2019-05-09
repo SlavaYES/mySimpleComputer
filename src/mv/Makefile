@@ -19,4 +19,5 @@ build:
 
 clear:
 	-rm -rf build
+	-rm -rf file_bin
 	-rm mva

@@ -22,6 +22,7 @@ $(BUILD)mySimpleComputer.o: mySimpleComputer.c mySimpleComputer.h
 
 build:
 	mkdir build file_bin
+	
 clear:
 	-rm -rf build
 	-rm -rf file_bin
