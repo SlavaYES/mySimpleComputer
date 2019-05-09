@@ -1,3 +1,4 @@
+#pragma once
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/ioctl.h>
@@ -13,7 +14,8 @@ enum Color {
     BLUE   = 4,
     PURPLE = 5,
     CYAN   = 6,
-    WHITE  = 7
+    WHITE  = 7,
+    DEFAULT = 9
 };
 
 int mt_clrscr(void); // Clear screen

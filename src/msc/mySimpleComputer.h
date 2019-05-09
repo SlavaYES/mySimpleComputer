@@ -1,3 +1,4 @@
+#pragma once
 #include <stdio.h>
 #define N 100
 #define M 10
@@ -9,6 +10,7 @@
 #define ERROROPER 5
 
 #define BIT7 0x7f
+#define BIT8 0xff
 
 int memory[N];
 int registr;

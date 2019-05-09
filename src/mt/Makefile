@@ -2,7 +2,7 @@
 
 CC = gcc
 
-CFLAGS = -Werror -Wall -std=c99
+CFLAGS = -Werror -Wall
 FLAGS = -o
 BUILD = build/
 
