@@ -1,7 +1,10 @@
 #include "mySimpleComputer.h"
 
-int sc_memoryInit()
-{
+int instruction_counter;
+int accumulator;
+int registr;
+
+int sc_memoryInit() {
     for (int i = 0; i < N; i++) {
         memory[i] = 0x0;
     }
@@ -9,8 +12,7 @@ int sc_memoryInit()
     return 0;
 }
 
-int sc_memorySet(int address, int value)
-{
+int sc_memorySet(int address, int value) {
     if (address >= 0  && address < N) {
         sc_regSet(ERRORADD, 0);
         memory[address] = value;
@@ -22,8 +24,7 @@ int sc_memorySet(int address, int value)
     return ERRORADD;
 }
 
-int sc_memoryGet(int address, int *value)
-{
+int sc_memoryGet(int address, int *value) {
     if (address >= 0 && address < N) {
         sc_regSet(ERRORADD, 0);
         *value = memory[address];
@@ -33,8 +34,7 @@ int sc_memoryGet(int address, int *value)
     return ERRORADD;
 }
 
-int sc_memorySave(char *filename)
-{
+int sc_memorySave(char *filename) {
     FILE *file;
     if (!(file = fopen(filename, "wb"))) {
         sc_regSet(ERRORFILE, 1);
@@ -47,14 +47,12 @@ int sc_memorySave(char *filename)
     return 0;
 }
 
-int sc_memoryLoad(char *filename)
-{
+int sc_memoryLoad(char *filename) {
 
     FILE *file;
     
     if (!(file = fopen(filename, "rd"))) {
         sc_regSet(ERRORFILE, 1);
-        fclose(file);
         return ERRORFILE;
     }
     fread(memory, sizeof(int), N, file);
@@ -64,15 +62,13 @@ int sc_memoryLoad(char *filename)
     return 0;
 }
 
-int sc_regInit(void)
-{
+int sc_regInit(void) {
     registr = registr & 0;
 
     return 0;
 }
 
-int sc_regSet(int flag, int value)
-{
+int sc_regSet(int flag, int value) {
     if (flag >= 0 && flag < 32) {
         if (value == 0) {
             registr = registr & (~(1 << flag));
@@ -88,8 +84,7 @@ int sc_regSet(int flag, int value)
     return ERRORFLAG;
 }
 
-int sc_regGet(int flag, int *value)
-{
+int sc_regGet(int flag, int *value) {
     if (flag >= 0 && flag < 31) {
         *value = (registr >> flag) & 0x1;
         return 0;
@@ -99,8 +94,33 @@ int sc_regGet(int flag, int *value)
     return ERRORFLAG;
 }
 
-int sc_checkCommand(int check_command)
-{
+int sc_accumGet(int *value) {
+	*value = accumulator;
+	return 0;
+}
+
+int sc_accumSet(int value) {
+	accumulator = value;
+	return 0;
+}
+
+int sc_countGet(int *value) {
+	*value = instruction_counter;
+	return 0;
+}
+
+int sc_countSet(int value) {
+	instruction_counter = value;
+	return 0;
+}
+
+int sc_countInkrement() {
+	if (instruction_counter == N - 1) return -1;
+	instruction_counter++;
+	return 0;
+}
+
+int sc_checkCommand(int check_command) {
     if (
         check_command == READ   ||
         check_command == WRITE  ||
@@ -143,8 +163,7 @@ int sc_checkCommand(int check_command)
     return 0;
 }
 
-int sc_commandEncode(int command, int operand, int *value)
-{
+int sc_commandEncode(int command, int operand, int *value) {
     if (sc_checkCommand(command) && operand < N) {
         sc_regSet(ERRORCOMS, 0);
         *value = (*value) & 0;
@@ -157,8 +176,7 @@ int sc_commandEncode(int command, int operand, int *value)
     return ERRORCOMS;
 }
 
-int sc_commandDecode(int value, int *command, int *operand)
-{
+int sc_commandDecode(int value, int *command, int *operand) {
     int buffer;
     buffer = (value >> 7) & BIT7;
     if ((value >> 14) == 1) { 

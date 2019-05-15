@@ -6,9 +6,10 @@
 
 #define ERRORADD  1
 #define ERRORFLAG 2
-#define ERRORCOMS 3
-#define ERRORFILE 4
+#define ERRORFILE 3
+#define ERRORCOMS 4
 #define ERROROPER 5
+#define IGNORTACT 6
 
 #define BIT7 0x7f
 #define BIT8 0xff
@@ -16,7 +17,7 @@
 int memory[N];
 int registr;
 
-enum command {
+enum com {
 
     // INPUT/OUTPUT
     READ  = 0x10,
@@ -94,6 +95,16 @@ int sc_commandEncode(int command, int operand, int *value); // encodes a command
 int sc_commandDecode(int value, int *command, int *operand); // decodes the value that command SC
 
 //
+
+int sc_accumGet(int *value);
+
+int sc_accumSet(int value);
+
+int sc_countGet(int *value);
+
+int sc_countSet(int value);
+
+int sc_countInkrement();
 
 #endif
 

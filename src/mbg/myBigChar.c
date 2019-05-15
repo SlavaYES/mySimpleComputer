@@ -1,6 +1,5 @@
 #include "myBigChar.h"
-#include "../mt/myTerm.h"
-#include "../msc/mySimpleComputer.h"
+
 
 int symbolbig[2] = {0, 0};
 
@@ -18,21 +17,21 @@ int bc_box(int x, int y, int dx, int dy) {
     mt_gotoXY(x, y);
     bc_printA(upleft);
 
-    for (int i = 0; i < dx - 2; i++) {
+    for (int i = 0; i < dy - 2; i++) {
         bc_printA(horiz);
     }
 
     bc_printA(upright);
-    for (int i = 1; i <= dy - 2; i++) {
-        mt_gotoXY(x, y + i);
+    for (int i = 1; i <= dx - 2; i++) {
+        mt_gotoXY(x + i, y);
         bc_printA(vert);
-        mt_gotoXY(x + dx - 1, y + i);
+        mt_gotoXY(x + i, y + dy - 1);
         bc_printA(vert);
     }
 
-    mt_gotoXY(x, y + dy - 1);
+    mt_gotoXY(x + dx - 1, y);
     bc_printA(downleft);
-    for (int i = 0; i < dx - 2; i++) {
+    for (int i = 0; i < dy - 2; i++) {
         bc_printA(horiz);
     }
     bc_printA(downright);
@@ -42,7 +41,7 @@ int bc_box(int x, int y, int dx, int dy) {
 
 int bc_printbigchar(int symbol[2], int x, int y, 
                         enum Color bgcolor, enum Color fgcolor) {
-    mt_gotoXY(y, x);
+    mt_gotoXY(x, y);
     mt_setfgcolor(fgcolor);
     mt_setbgcolor(bgcolor);
 
@@ -57,7 +56,7 @@ int bc_printbigchar(int symbol[2], int x, int y,
 					printf(" ");
 				}
             }
-            mt_gotoXY(y, x++);
+            mt_gotoXY(x++, y);
         }
     }
     mt_setbgcolor(BLACK);

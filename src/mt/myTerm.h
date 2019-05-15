@@ -7,6 +7,8 @@
 #include <termios.h>
 #include <stdio.h>
 
+#define TERM "/dev/tty"
+
 enum Color {
     BLACK  = 0,
     RED    = 1,

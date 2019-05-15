@@ -21,9 +21,8 @@ $(BUILD)mySimpleComputer.o: mySimpleComputer.c mySimpleComputer.h
 	$(CC) $(CFLAGS) -c mySimpleComputer.c -o $@
 
 build:
-	mkdir build file_bin
+	mkdir build
 	
 clear:
 	-rm -rf build
-	-rm -rf file_bin
 	-rm msca

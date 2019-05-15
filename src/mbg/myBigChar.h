@@ -8,6 +8,9 @@
 #include <unistd.h>
 #include <fcntl.h> 
 
+#include "../mt/myTerm.h"
+#include "../msc/mySimpleComputer.h"
+
 #define EN_ACS "\E(0"
 #define DS_ACS "\E(B"
 

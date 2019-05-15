@@ -4,3 +4,7 @@
 .bin
 main
 /file_bin
+src/mcmp
+memory.dat
+globalht.txt
+globalhs.txt
